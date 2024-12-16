@@ -1,34 +1,35 @@
 import { useSearchParams } from 'react-router-dom';
 import useSearchQuery from '../../hooks/useSearchQuery';
-import { useGetObjectsMutation } from '../../api/api';
+import { useGetObjectsQuery } from '../../api/api';
 import { useDispatch } from 'react-redux';
 import { setObjects } from '../../store/slices/objectsSlice';
 import { setIsLoading } from '../../store/slices/isLoadingSlice';
-import { setIsLast } from '../../store/slices/isLastSlice';
-import { useEffect } from 'react';
+import { setTotal } from '../../store/slices/totalSlice';
+import { useEffect, useState } from 'react';
 import './search.scss';
 
 export function Search() {
   const [searchString, setSearchString, saveSearchString] = useSearchQuery();
+  const [finalSearch, setFinalSearch] = useState(searchString);
   const [searchParams, setSearchParams] = useSearchParams();
-  const pageNumber = (Number(searchParams.get('page')) || 1) - 1;
-  const [getObjects, { isLoading }] = useGetObjectsMutation();
+  const pageNumber = Number(searchParams.get('page')) || 1;
   const dispatch = useDispatch();
+
+  const { data, isLoading } = useGetObjectsQuery({
+    pageNumber,
+    searchString: finalSearch,
+  });
 
   useEffect(() => {
     dispatch(setIsLoading(isLoading));
   }, [isLoading]);
 
   useEffect(() => {
-    search();
-  }, [pageNumber]);
-
-  const search = () => {
-    getObjects({ searchString, pageNumber }).then(({ data }) => {
-      dispatch(setObjects(data?.astronomicalObjects));
-      dispatch(setIsLast(data?.page.lastPage));
-    });
-  };
+    if (data) {
+      dispatch(setObjects(data?.data));
+      dispatch(setTotal(data?.total));
+    }
+  }, [data]);
 
   return (
     <div className="search-block">
@@ -45,7 +46,7 @@ export function Search() {
           onClick={() => {
             saveSearchString();
             setSearchParams({ page: '1' });
-            search();
+            setFinalSearch(searchString);
           }}
         ></div>
       </div>

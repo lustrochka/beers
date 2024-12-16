@@ -5,27 +5,17 @@ export type SearchParams = {
 };
 
 export interface IObjectsResponse {
-  page: { lastPage: boolean };
-  astronomicalObjects: IAstronomicalObject[];
+  total: number;
+  data: IObjectResponse[];
 }
 
 export interface IObjectResponse {
-  astronomicalObject: {
-    name: string;
-    astronomicalObjectType: string;
-    location?: {
-      name: string;
-      location: {
-        name: string;
-      };
-    };
-  };
-}
-
-export interface IAstronomicalObject {
-  uid: number;
+  id: string;
   name: string;
-  astronomicalObjectType: string;
+  abv: number;
+  ibu: number;
+  type: string;
+  country: string;
 }
 
 export interface RequestSearchParams {
@@ -36,7 +26,9 @@ export interface RequestSearchParams {
 export interface ISelectedItems {
   [id: string]: {
     name: string;
+    abv: string;
+    ibu: string;
     type: string;
-    location?: string;
+    country: string;
   };
 }

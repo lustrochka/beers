@@ -5,15 +5,15 @@ import {
   IObjectResponse,
 } from '../types';
 
-const BASE_URL = 'http://stapi.co/api/v1/rest/astronomicalObject';
+const BASE_URL = 'https://beers-api.vercel.app/api/beers';
 
-export const stapi = createApi({
+export const API = createApi({
   reducerPath: 'stapi',
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL,
   }),
   endpoints: (build) => ({
-    getObjects: build.mutation<IObjectsResponse, RequestSearchParams>({
+    getObjects: build.query<IObjectsResponse, RequestSearchParams>({
       query: ({
         searchString,
         pageNumber,
@@ -22,30 +22,19 @@ export const stapi = createApi({
         pageNumber: number;
       }) => {
         const params = {
-          pageNumber,
-          pageSize: 10,
+          page: pageNumber,
+          search: searchString,
         };
-
-        const body = new URLSearchParams();
-        if (searchString) {
-          body.append('name', searchString);
-        }
         return {
-          url: '/search',
-          method: 'POST',
-          headers: {
-            accept: 'application/json',
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
+          url: '',
           params,
-          body: body.toString(),
         };
       },
     }),
     getObject: build.query<IObjectResponse, string>({
-      query: (id: string) => `?uid=${id}`,
+      query: (id: string) => `/${id}`,
     }),
   }),
 });
 
-export const { useGetObjectsMutation, useGetObjectQuery } = stapi;
+export const { useGetObjectsQuery, useGetObjectQuery } = API;

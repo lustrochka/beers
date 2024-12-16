@@ -6,7 +6,8 @@ import './pagination.scss';
 export default function Pagination() {
   const [searchParams, setSearchParams] = useSearchParams();
   const page = Number(searchParams.get('page')) || 1;
-  const isLast = useSelector((state: RootState) => state.isLast.isLast);
+  const total = useSelector((state: RootState) => state.total.total);
+  const isLast = total / 10 <= page;
   const increasePage = () => {
     setSearchParams({ page: `${page + 1}` });
   };

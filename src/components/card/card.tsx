@@ -1,4 +1,4 @@
-import { IAstronomicalObject, ISelectedItems } from '../../types';
+import { IObjectResponse, ISelectedItems } from '../../types';
 import { useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
@@ -8,7 +8,7 @@ import { useGetObjectQuery } from '../../api/api';
 import './card.scss';
 
 interface IMyProps {
-  data: IAstronomicalObject;
+  data: IObjectResponse;
 }
 
 export default function Card(props: IMyProps) {
@@ -19,7 +19,7 @@ export default function Card(props: IMyProps) {
   );
   const [shouldFetch, setShouldFetch] = useState(false);
 
-  const { data } = useGetObjectQuery(props.data.uid.toString(), {
+  const { data } = useGetObjectQuery(props.data.id.toString(), {
     skip: !shouldFetch,
   });
 
@@ -30,11 +30,11 @@ export default function Card(props: IMyProps) {
   const onClick = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     if (e.target instanceof HTMLElement) {
       if (!e.target.classList.contains('card-checkbox'))
-        goToItem(props.data.uid);
+        goToItem(props.data.id);
     }
   };
 
-  const goToItem = (id: number) => {
+  const goToItem = (id: string) => {
     const newSearchParams = new URLSearchParams(searchParams);
     newSearchParams.set('details', `${id}`);
     setSearchParams(newSearchParams);
@@ -42,12 +42,12 @@ export default function Card(props: IMyProps) {
 
   const changeSelectedItems = () => {
     const selectedItemsCopy = { ...selectedItems };
-    selectedItemsCopy[props.data.uid.toString()] = {
-      name: data?.astronomicalObject.name || '',
-      type: data?.astronomicalObject.astronomicalObjectType || '',
-      ...(data?.astronomicalObject.location && {
-        location: `${data.astronomicalObject.location.name}, ${data.astronomicalObject.location.location.name}`,
-      }),
+    selectedItemsCopy[props.data.id.toString()] = {
+      name: data?.name || '',
+      type: data?.type || '',
+      abv: data?.abv.toString() || '',
+      ibu: data?.ibu.toString() || '',
+      country: data?.country || '',
     };
     return selectedItemsCopy;
   };
@@ -61,7 +61,7 @@ export default function Card(props: IMyProps) {
       }
     } else {
       const selectedItemsCopy = { ...selectedItems };
-      delete selectedItemsCopy[props.data.uid];
+      delete selectedItemsCopy[props.data.id];
       dispatch(setSelected(selectedItemsCopy));
     }
   };
@@ -69,11 +69,14 @@ export default function Card(props: IMyProps) {
   return (
     <div className="result-item" onClick={(e) => onClick(e)}>
       <h3>{props.data.name}</h3>
-      <div>type: {props.data.astronomicalObjectType}</div>
+      {props.data.abv && <div>abv: {props.data.abv}%</div>}
+      {props.data.ibu && <div>ibu: {props.data.ibu}°</div>}
+      {props.data.type && <div>type: {props.data.type}</div>}
+      <div>country: {props.data.country}</div>
       <input
         type="checkbox"
         className="card-checkbox"
-        checked={props.data.uid in selectedItems}
+        checked={props.data.id in selectedItems}
         onChange={(e) => handleChange(e)}
       ></input>
     </div>

@@ -1,11 +1,11 @@
-import { IAstronomicalObject } from '../../types';
+import { IObjectResponse } from '../../types';
 import Card from '../card/card';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import './cardList.scss';
 
 export function CardList() {
-  const objectsData: IAstronomicalObject[] = useSelector(
+  const objectsData: IObjectResponse[] = useSelector(
     (state: RootState) => state.objects.objects
   );
   const isLoading: boolean = useSelector(
@@ -18,8 +18,8 @@ export function CardList() {
         <div className="results">
           {objectsData.length === 0 && <h2 className="">Nothing found</h2>}
           <div className="result-container">
-            {objectsData.map((item: IAstronomicalObject) => (
-              <Card key={item.uid.toString()} data={item} />
+            {objectsData.map((item: IObjectResponse) => (
+              <Card key={item.id.toString()} data={item} />
             ))}
           </div>
         </div>
