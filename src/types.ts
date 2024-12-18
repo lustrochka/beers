@@ -16,6 +16,7 @@ export interface IObjectResponse {
   ibu: number;
   type: string;
   country: string;
+  description: string;
 }
 
 export interface RequestSearchParams {

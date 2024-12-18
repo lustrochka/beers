@@ -33,7 +33,7 @@ export function Search() {
 
   return (
     <div className="search-block">
-      <div>Find astronomical object</div>
+      <div>Find beer</div>
       <div className="search">
         <input
           type="search"

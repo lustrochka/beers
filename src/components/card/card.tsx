@@ -69,10 +69,7 @@ export default function Card(props: IMyProps) {
   return (
     <div className="result-item" onClick={(e) => onClick(e)}>
       <h3>{props.data.name}</h3>
-      {props.data.abv && <div>abv: {props.data.abv}%</div>}
-      {props.data.ibu && <div>ibu: {props.data.ibu}°</div>}
-      {props.data.type && <div>type: {props.data.type}</div>}
-      <div>country: {props.data.country}</div>
+      <div>{props.data.description.slice(0, 350)}...</div>
       <input
         type="checkbox"
         className="card-checkbox"

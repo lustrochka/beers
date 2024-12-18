@@ -7,6 +7,11 @@
   position: relative;
 }
 
+.result-item:hover {
+  cursor: pointer;
+  background-color: rgb(171, 163, 96);
+}
+
 .card-checkbox {
   position: absolute;
   top: 10px;

@@ -23,11 +23,38 @@ export function DetailedPage() {
         {error && <div>Something went wrong...</div>}
         {data && (
           <>
-            <h2>{data.astronomicalObject.name}</h2>
-            <div>{data.astronomicalObject.astronomicalObjectType}</div>
-            {data.astronomicalObject.location && (
-              <div>{`${data.astronomicalObject.location.name}, ${data.astronomicalObject.location.location.name}`}</div>
-            )}
+            <h2>{data.name}</h2>
+            <div>{data.description}</div>
+            <div className="chars">
+              <div>
+                {data.abv && (
+                  <div>
+                    <span className="details-name">ABV: </span>
+                    {data.abv}%
+                  </div>
+                )}
+                {data.ibu && (
+                  <div>
+                    <span className="details-name">IBU: </span>
+                    {data.ibu}°
+                  </div>
+                )}
+              </div>
+              <div>
+                {data.type && (
+                  <div>
+                    <span className="details-name">type: </span>
+                    {data.type}
+                  </div>
+                )}
+                {data.country && (
+                  <div>
+                    <span className="details-name">country: </span>
+                    {data.country}
+                  </div>
+                )}
+              </div>
+            </div>
           </>
         )}
       </div>
