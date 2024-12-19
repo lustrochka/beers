@@ -22,7 +22,15 @@ render(
           path="*"
           element={
             <Card
-              data={{ uid: 8, name: 'Sun', astronomicalObjectType: 'Star' }}
+              data={{
+                id: '8',
+                name: 'Black Beer',
+                abv: 8,
+                ibu: 12,
+                type: 'ale',
+                country: 'Belarus',
+                description: 'Some awful beer',
+              }}
             ></Card>
           }
         ></Route>
@@ -33,17 +41,19 @@ render(
 
 describe('Card', () => {
   it('renders data correctly', async () => {
-    expect(screen.getByText(/Sun/)).toBeInTheDocument();
-    expect(screen.getByText(/Star/)).toBeInTheDocument();
+    expect(screen.getByText(/Black/)).toBeInTheDocument();
+    expect(screen.getByText(/awful/)).toBeInTheDocument();
   });
 
   it('opens a detailed card component on clicking', async () => {
     waitFor(() => {
-      const card = screen.getByText(/Sun/);
+      const card = screen.getByText(/Black/);
       userEvent
         .click(card)
         .then(() =>
-          waitFor(() => expect(screen.getByText(/✖/i)).toBeInTheDocument())
+          waitFor(() =>
+            expect(screen.getByText(/Belarus/i)).toBeInTheDocument()
+          )
         );
     });
   });
@@ -54,11 +64,11 @@ describe('Card', () => {
       http.get(BASE_URL, () => {
         mockGet();
 
-        return new Response(JSON.stringify({ astronomicalObject: {} }));
+        return new Response(JSON.stringify({ data: {} }));
       })
     );
     waitFor(() => {
-      const card = screen.getByText(/Sun/);
+      const card = screen.getByText(/Black/);
       userEvent
         .click(card)
         .then(() => waitFor(() => expect(mockGet).toHaveBeenCalled()));
