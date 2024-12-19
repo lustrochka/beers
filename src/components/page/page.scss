@@ -16,6 +16,8 @@
 .bottom-section {
   background-color: #bf7232;
   padding-top: 20px;
+  min-height: calc(100vh - 132px);
+  height: calc(100% - 132px);
 }
 
 .light {

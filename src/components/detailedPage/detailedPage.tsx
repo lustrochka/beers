@@ -23,8 +23,10 @@ export function DetailedPage() {
         {error && <div>Something went wrong...</div>}
         {data && (
           <>
-            <h2>{data.name}</h2>
-            <div>{data.description}</div>
+            <div>
+              <h2>{data.name}</h2>
+              <div>{data.description}</div>
+            </div>
             <div className="chars">
               <div>
                 {data.abv && (
