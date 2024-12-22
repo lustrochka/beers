@@ -46,7 +46,7 @@ describe('Search', () => {
     );
     const spyLoStoRemove = jest.spyOn(localStorage, 'setItem');
     await userEvent.type(screen.getByRole('searchbox'), 'ipa');
-    await userEvent.click(container.getElementsByClassName('loupe')[0]);
+    await userEvent.click(container.getElementsByClassName('search__loupe')[0]);
     expect(spyLoStoRemove).toHaveBeenCalled();
     expect(localStorageMock.getItem('searchString')).toEqual('ipa');
   });
