@@ -18,7 +18,7 @@ export function DetailedPage() {
       <div className="close-button" onClick={changeUrl}>
         ✖
       </div>
-      <div className="details-item">
+      <div className="details__item">
         {isLoading && <Loader />}
         {error && <div>Something went wrong...</div>}
         {data && (
@@ -27,17 +27,17 @@ export function DetailedPage() {
               <h2>{data.name}</h2>
               <div>{data.description}</div>
             </div>
-            <div className="chars">
+            <div className="details__chars">
               <div>
                 {data.abv && (
                   <div>
-                    <span className="details-name">ABV: </span>
+                    <span className="details__name">ABV: </span>
                     {data.abv}%
                   </div>
                 )}
                 {data.ibu && (
                   <div>
-                    <span className="details-name">IBU: </span>
+                    <span className="details__name">IBU: </span>
                     {data.ibu}°
                   </div>
                 )}
@@ -45,13 +45,13 @@ export function DetailedPage() {
               <div>
                 {data.type && (
                   <div>
-                    <span className="details-name">type: </span>
+                    <span className="details__name">type: </span>
                     {data.type}
                   </div>
                 )}
                 {data.country && (
                   <div>
-                    <span className="details-name">country: </span>
+                    <span className="details__name">country: </span>
                     {data.country}
                   </div>
                 )}

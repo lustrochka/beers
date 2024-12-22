@@ -1,10 +1,10 @@
-.search-block {
+.search {
   width: 250px;
   margin: 0 auto;
   color: white;
 }
 
-.search {
+.search__field {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
@@ -13,14 +13,14 @@
   border: solid 2px #fddd32;
 }
 
-.search-input {
+.search__input {
   color: white;
   border: none;
   background-color: rgb(70, 70, 70);
   border-radius: 10px;
 }
 
-.loupe {
+.search__loupe {
   width: 20px;
   height: 30px;
   margin: 5px 8px 0;
@@ -33,10 +33,10 @@
 }
 
 .light {
-  .search-block {
+  .search {
     color: black;
   }
-  .search {
+  .search__field {
     border: none;
   }
 }

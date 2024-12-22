@@ -1,9 +1,4 @@
-.not-found {
-  text-align: center;
-  color: black;
-}
-
-.result-container {
+.cardlist__container {
   display: grid;
   grid-template-columns: repeat(auto-fit, 250px);
   gap: 10px;

@@ -32,17 +32,17 @@ export function Search() {
   }, [data]);
 
   return (
-    <div className="search-block">
+    <div className="search">
       <div>Find beer</div>
-      <div className="search">
+      <div className="search__field">
         <input
           type="search"
           value={searchString}
-          className="search-input"
+          className="search__input"
           onChange={(event) => setSearchString(event.target.value.trim())}
         ></input>
         <div
-          className="loupe"
+          className="search__loupe"
           onClick={() => {
             saveSearchString();
             setSearchParams({ page: '1' });

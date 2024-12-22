@@ -31,5 +31,6 @@ export interface ISelectedItems {
     ibu: string;
     type: string;
     country: string;
+    description: string;
   };
 }

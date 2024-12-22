@@ -1,0 +1,50 @@
+.not-found__circle {
+  display: block;
+  overflow: visible;
+  width: 200px;
+  position: absolute;
+  top: 30px;
+  left: 395px;
+}
+
+.not-found__circle path {
+  fill: none;
+}
+
+.not-found__title {
+  font-size: 68px;
+  letter-spacing: 10px;
+  fill: none;
+  stroke: black;
+}
+
+.not-found__subtitle {
+  font-size: 30px;
+}
+
+.not-found {
+  padding: 20px;
+  text-align: center;
+}
+
+.not-found__container {
+  position: relative;
+  margin-left: -50px;
+}
+
+.not-found__paragraph {
+  font-size: 24px;
+}
+
+.not-found__button {
+  background-color: rgb(255, 247, 0);
+  border: 1px solid #a7a6a6
+}
+
+.not-found__button:focus {
+    outline: none;
+}
+
+.not-found__button:hover {
+    background-color: rgb(255, 204, 0);
+}

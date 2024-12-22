@@ -15,9 +15,9 @@ export function CardList() {
   return (
     <>
       {!isLoading && objectsData && (
-        <div className="results">
+        <div className="cardlist">
           {objectsData.length === 0 && <h2 className="">Nothing found</h2>}
-          <div className="result-container">
+          <div className="cardlist__container">
             {objectsData.map((item: IObjectResponse) => (
               <Card key={item.id.toString()} data={item} />
             ))}

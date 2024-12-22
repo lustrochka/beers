@@ -36,7 +36,7 @@ export default function Flyout() {
             <button onClick={() => dispatch(setSelected([]))}>
               Unselect all
             </button>
-            <a href={downloadCSV()} download="astronomical objects.csv">
+            <a href={downloadCSV()} download="beers.csv">
               <button>Download</button>
             </a>
           </div>

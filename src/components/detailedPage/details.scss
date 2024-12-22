@@ -5,7 +5,7 @@
   padding: 20px;
 }
 
-.details-item {
+.details__item {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -20,10 +20,6 @@
   min-height: 500px;
 }
 
-.beer-image {
-  width: 90px;
-}
-
 .close-button {
   color: black;
   font-size: 30px;
@@ -36,19 +32,19 @@
   }
 }
 
-.chars {
+.details__chars {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
   text-align: left;
 }
 
-.details-name {
+.details__name {
   font-weight: 700;
 }
 
 @media (max-width: 850px) {
-  .details-item {
+  .details__item {
     background-repeat: repeat;
   }
 }

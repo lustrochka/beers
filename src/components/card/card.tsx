@@ -48,6 +48,7 @@ export default function Card(props: IMyProps) {
       abv: data?.abv.toString() || '',
       ibu: data?.ibu.toString() || '',
       country: data?.country || '',
+      description: data?.description || '',
     };
     return selectedItemsCopy;
   };
@@ -67,12 +68,12 @@ export default function Card(props: IMyProps) {
   };
 
   return (
-    <div className="result-item" onClick={(e) => onClick(e)}>
+    <div className="card" onClick={(e) => onClick(e)}>
       <h3>{props.data.name}</h3>
       <div>{props.data.description.slice(0, 350)}...</div>
       <input
         type="checkbox"
-        className="card-checkbox"
+        className="card__checkbox"
         checked={props.data.id in selectedItems}
         onChange={(e) => handleChange(e)}
       ></input>
