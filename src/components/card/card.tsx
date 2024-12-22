@@ -70,7 +70,9 @@ export default function Card(props: IMyProps) {
   return (
     <div className="card" onClick={(e) => onClick(e)}>
       <h3>{props.data.name}</h3>
-      <div>{props.data.description.slice(0, 350)}...</div>
+      {props.data.description && (
+        <div>{props.data.description.slice(0, 350)}...</div>
+      )}
       <input
         type="checkbox"
         className="card__checkbox"
