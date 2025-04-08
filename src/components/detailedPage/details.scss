@@ -1,0 +1,59 @@
+.details {
+  width: 50%;
+  text-align: center;
+  background-color: rgb(205, 192, 141);
+  padding: 20px;
+}
+
+.details__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 5px double black;
+  padding: 5px 5px 15px;
+  background: rgb(205, 192, 141) url(../../assets/00440.png) no-repeat center;
+  background-size: contain;
+  position: fixed;
+  top: 50%;
+  margin-right: 20px;
+  transform: translate(0, -50%);
+  min-height: 500px;
+}
+
+.close-button {
+  color: black;
+  font-size: 30px;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.details__chars {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  text-align: left;
+}
+
+.details__name {
+  font-weight: 700;
+}
+
+@media (max-width: 850px) {
+  .details__item {
+    background-repeat: repeat;
+  }
+}
+
+@media (max-width: 720px) {
+  .details {
+    width: 350px;
+    position: fixed;
+    right: 0;
+    height: 100%;
+  }
+}

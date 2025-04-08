@@ -1,0 +1,42 @@
+.search {
+  width: 250px;
+  margin: 0 auto;
+  color: white;
+}
+
+.search__field {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  background-color: rgb(70, 70, 70);
+  border-radius: 10px;
+  border: solid 2px #fddd32;
+}
+
+.search__input {
+  color: white;
+  border: none;
+  background-color: rgb(70, 70, 70);
+  border-radius: 10px;
+}
+
+.search__loupe {
+  width: 20px;
+  height: 30px;
+  margin: 5px 8px 0;
+  background-image: url('../../assets/drawing-2.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.light {
+  .search {
+    color: black;
+  }
+  .search__field {
+    border: none;
+  }
+}
